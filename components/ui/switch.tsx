@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface SwitchProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
 }
 
