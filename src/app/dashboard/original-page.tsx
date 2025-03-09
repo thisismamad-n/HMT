@@ -61,19 +61,39 @@ ChartJS.register(
   ChartJSLegend
 );
 
-// Define a proper interface for the browserChartConfig
-interface ExtendedChartConfig extends ChartConfig {
+// Define a completely new interface for the browser chart config
+interface BrowserChartConfigType {
   visitors: { 
     label: string 
+  };
+  type: {
+    label: string;
+    color: string;
   };
   options: { 
     label: string;
     responsive: boolean;
     plugins: any;
-    cutout?: string;
+    cutout: string;
     [key: string]: any;
   };
   data: any;
+  [key: string]: {
+    label: string;
+    color?: string;
+  } | any; // This allows other properties required by ChartConfig while also allowing our custom properties
+}
+
+// Define a type for the locale options
+interface LocaleOptions {
+  localize: {
+    day: (n: number) => string;
+    month: (n: number) => string;
+    formatWeekday: (day: number) => string;
+  };
+  formatLong: {
+    date: () => string;
+  };
 }
 
 export default function Dashboard() {
@@ -518,7 +538,7 @@ export default function Dashboard() {
   ];
 
   // Use the new interface
-  const browserChartConfig: ExtendedChartConfig = {
+  const browserChartConfig: BrowserChartConfigType = {
     visitors: {
       label: "Visitors"
     },
@@ -556,10 +576,11 @@ export default function Dashboard() {
     data: browserChartData,
   };
 
-  const localeOptions = {
+  // Use the type
+  const localeOptions: LocaleOptions = {
     localize: {
-      day: n => ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'][n],
-      month: n => ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'][n],
+      day: (n: number) => ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'][n],
+      month: (n: number) => ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'][n],
       formatWeekday: (day: number) => ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'][day],
     },
     formatLong: {
@@ -716,13 +737,12 @@ export default function Dashboard() {
                 <Card className="h-[300px]">
                   <CardContent className="p-0 h-full flex items-center justify-center">
                     <Calendar
-                      dir="rtl"
                       mode="single"
                       selected={date}
                       onSelect={setDate}
                       className="max-w-sm mx-auto"
                       showOutsideDays={false}
-                      locale={localeOptions}
+                      locale={localeOptions as any}
                       components={{
                         IconLeft: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
                         IconRight: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
