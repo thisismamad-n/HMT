@@ -149,7 +149,7 @@ export default function Dashboard() {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => {
+            callback: (value: any) => {
               return `${(value as number).toLocaleString('fa-IR')}`;
             },
             font: {
@@ -192,7 +192,7 @@ export default function Dashboard() {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => {
+            callback: (value: any) => {
               return `${(value as number).toLocaleString('fa-IR')}`;
             },
             font: {
@@ -241,7 +241,7 @@ export default function Dashboard() {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => {
+            callback: (value: any) => {
               return `${(value as number).toLocaleString('fa-IR')}`;
             },
             font: {
@@ -507,10 +507,10 @@ export default function Dashboard() {
     },
     type: {
       label: 'doughnut',
-      color: '#0f172a',
-      responsive: true,
+      color: '#0f172a'
     },
     options: {
+      label: 'Options',
       responsive: true,
       plugins: {
         legend: {
