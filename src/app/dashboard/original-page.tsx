@@ -61,6 +61,21 @@ ChartJS.register(
   ChartJSLegend
 );
 
+// Define a proper interface for the browserChartConfig
+interface ExtendedChartConfig extends ChartConfig {
+  visitors: { 
+    label: string 
+  };
+  options: { 
+    label: string;
+    responsive: boolean;
+    plugins: any;
+    cutout?: string;
+    [key: string]: any;
+  };
+  data: any;
+}
+
 export default function Dashboard() {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [moveGoal, setMoveGoal] = useState(350);
@@ -502,10 +517,8 @@ export default function Dashboard() {
     { browser: 'Opera', visitors: 2443, fill: '#94a3b8' },
   ];
 
-  const browserChartConfig: ChartConfig & { 
-    visitors: { label: string },
-    options: { label: string, [key: string]: any }
-  } = {
+  // Use the new interface
+  const browserChartConfig: ExtendedChartConfig = {
     visitors: {
       label: "Visitors"
     },
