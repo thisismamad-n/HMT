@@ -469,6 +469,7 @@ export default function Dashboard() {
 
   // Configuration for browser chart
   const browserChartData = {
+    label: 'Browser Data',
     labels: ['Chrome', 'Firefox', 'Safari', 'Edge', 'Opera'],
     datasets: [
       {
@@ -501,7 +502,10 @@ export default function Dashboard() {
     { browser: 'Opera', visitors: 2443, fill: '#94a3b8' },
   ];
 
-  const browserChartConfig: ChartConfig & { visitors: { label: string } } = {
+  const browserChartConfig: ChartConfig & { 
+    visitors: { label: string },
+    options: { label: string, [key: string]: any }
+  } = {
     visitors: {
       label: "Visitors"
     },
@@ -526,7 +530,7 @@ export default function Dashboard() {
         },
         tooltip: {
           callbacks: {
-            label: function(context) {
+            label: function(context: any) {
               const label = context.label || '';
               const value = context.raw;
               return `${label}: ${value} بازدید`;
@@ -537,6 +541,17 @@ export default function Dashboard() {
       cutout: '70%',
     },
     data: browserChartData,
+  };
+
+  const localeOptions = {
+    localize: {
+      day: n => ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'][n],
+      month: n => ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'][n],
+      formatWeekday: (day: number) => ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'][day],
+    },
+    formatLong: {
+      date: () => 'MM/dd/yyyy',
+    },
   };
 
   return (
@@ -694,16 +709,7 @@ export default function Dashboard() {
                       onSelect={setDate}
                       className="max-w-sm mx-auto"
                       showOutsideDays={false}
-                      locale={{
-                        localize: {
-                          day: n => ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'][n],
-                          month: n => ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'][n],
-                          dayOfWeek: day => ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'][day],
-                        },
-                        formatLong: {
-                          date: () => 'MM/dd/yyyy',
-                        },
-                      }}
+                      locale={localeOptions}
                       components={{
                         IconLeft: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
                         IconRight: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
