@@ -25,6 +25,9 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
+// Add this line to force dynamic rendering and skip static generation
+export const dynamic = 'force-dynamic';
+
 export default function Dashboard() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [date, setDate] = useState<Date>(new Date());

@@ -61,6 +61,9 @@ ChartJS.register(
   ChartJSLegend
 );
 
+// Add this line to force dynamic rendering and skip static generation
+export const dynamic = 'force-dynamic';
+
 // Define a completely new interface for the browser chart config
 interface BrowserChartConfigType {
   visitors: { 
