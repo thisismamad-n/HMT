@@ -1,0 +1,63 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#f8fafc" />
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="280" height="1080" fill="#1e293b" />
+  
+  <!-- Logo Area -->
+  <rect x="40" y="40" width="200" height="60" rx="8" fill="#334155" />
+  <text x="70" y="80" font-family="Arial" font-size="32" font-weight="bold" fill="white">HMT</text>
+  
+  <!-- Sidebar Menu Items -->
+  <rect x="40" y="160" width="200" height="50" rx="8" fill="#475569" />
+  <rect x="40" y="230" width="200" height="50" rx="8" fill="#334155" />
+  <rect x="40" y="300" width="200" height="50" rx="8" fill="#334155" />
+  <rect x="40" y="370" width="200" height="50" rx="8" fill="#334155" />
+  <rect x="40" y="440" width="200" height="50" rx="8" fill="#334155" />
+  
+  <!-- Main Content Area -->
+  <rect x="320" y="40" width="1560" height="80" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  
+  <!-- Search Bar -->
+  <rect x="340" y="60" width="400" height="40" rx="20" fill="#f1f5f9" />
+  <circle cx="360" cy="80" r="10" fill="#64748b" />
+  
+  <!-- User Avatar -->
+  <circle cx="1800" cy="80" r="30" fill="#60a5fa" />
+  
+  <!-- Dashboard Cards Row 1 -->
+  <rect x="320" y="160" width="500" height="200" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="190" width="200" height="20" rx="4" fill="#64748b" />
+  <rect x="350" y="230" width="440" height="100" rx="4" fill="#f1f5f9" />
+  
+  <rect x="850" y="160" width="500" height="200" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="880" y="190" width="200" height="20" rx="4" fill="#64748b" />
+  <rect x="880" y="230" width="440" height="100" rx="4" fill="#f1f5f9" />
+  
+  <rect x="1380" y="160" width="500" height="200" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="1410" y="190" width="200" height="20" rx="4" fill="#64748b" />
+  <rect x="1410" y="230" width="440" height="100" rx="4" fill="#f1f5f9" />
+  
+  <!-- Dashboard Charts Row 2 -->
+  <rect x="320" y="390" width="770" height="300" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="420" width="200" height="20" rx="4" fill="#64748b" />
+  <rect x="350" y="460" width="710" height="200" rx="4" fill="#f1f5f9" />
+  
+  <rect x="1120" y="390" width="760" height="300" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="1150" y="420" width="200" height="20" rx="4" fill="#64748b" />
+  <rect x="1150" y="460" width="700" height="200" rx="4" fill="#f1f5f9" />
+  
+  <!-- Dashboard Tables Row 3 -->
+  <rect x="320" y="720" width="1560" height="320" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="750" width="200" height="20" rx="4" fill="#64748b" />
+  
+  <!-- Table Headers -->
+  <rect x="350" y="790" width="1500" height="40" rx="4" fill="#f8fafc" />
+  
+  <!-- Table Rows -->
+  <rect x="350" y="840" width="1500" height="40" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="890" width="1500" height="40" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="940" width="1500" height="40" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+  <rect x="350" y="990" width="1500" height="40" rx="4" fill="white" stroke="#e2e8f0" stroke-width="1" />
+</svg> 
