@@ -17,6 +17,7 @@ import {
   Title,
   Tooltip as ChartJSTooltip,
   Legend as ChartJSLegend,
+  ChartOptions,
 } from 'chart.js';
 import Sidebar from '@/components/Sidebar';
 import { TrendingUp } from "lucide-react"
@@ -127,7 +128,7 @@ export default function Dashboard() {
       },
         tooltip: {
           callbacks: {
-            label: (context) => {
+            label: (context: any) => {
               const value = context.raw as number;
               return `${value.toLocaleString('fa-IR')} تومان`;
             },
@@ -158,7 +159,7 @@ export default function Dashboard() {
         },
       },
     },
-  };
+  } as ChartOptions<'line'>;
 
   const subscriptionsChartConfig = {
     type: 'bar',
@@ -170,7 +171,7 @@ export default function Dashboard() {
         },
         tooltip: {
           callbacks: {
-            label: (context) => {
+            label: (context: any) => {
               const value = context.raw as number;
               return `${value.toLocaleString('fa-IR')} مشتری`;
             },
@@ -201,7 +202,7 @@ export default function Dashboard() {
         },
       },
     },
-  };
+  } as ChartOptions<'line'>;
 
   const exerciseChartConfig = {
     type: 'line',
@@ -219,7 +220,7 @@ export default function Dashboard() {
         },
         tooltip: {
           callbacks: {
-            label: (context) => {
+            label: (context: any) => {
               const value = context.raw as number;
               return `${value.toLocaleString('fa-IR')} میلیون تومان`;
             },
@@ -250,7 +251,7 @@ export default function Dashboard() {
         },
       },
     },
-  };
+  } as ChartOptions<'line'>;
 
   const timeOptions = [
     { value: "1d", label: "۲۴ ساعت گذشته" },
@@ -468,38 +469,47 @@ export default function Dashboard() {
 
   // Configuration for browser chart
   const browserChartData = {
+    labels: ['Chrome', 'Firefox', 'Safari', 'Edge', 'Opera'],
     datasets: [
       {
-        data: browserData.map((item) => item.value),
+        data: [4344, 5435, 1443, 4443, 2443],
         backgroundColor: [
-          'hsl(var(--chart-1))',
-          'hsl(var(--chart-2))',
-          'hsl(var(--chart-3))',
-          'hsl(var(--chart-4))',
-          'hsl(var(--chart-5))',
+          '#0f172a',
+          '#334155',
+          '#475569',
+          '#64748b',
+          '#94a3b8',
         ],
         hoverBackgroundColor: [
-          'hsl(var(--chart-1))',
-          'hsl(var(--chart-2))',
-          'hsl(var(--chart-3))',
-          'hsl(var(--chart-4))',
-          'hsl(var(--chart-5))',
+          '#0f172a',
+          '#334155',
+          '#475569',
+          '#64748b',
+          '#94a3b8',
         ],
-        borderColor: [
-          'hsl(var(--chart-1))',
-          'hsl(var(--chart-2))',
-          'hsl(var(--chart-3))',
-          'hsl(var(--chart-4))',
-          'hsl(var(--chart-5))',
-        ],
-        borderWidth: 1,
+        borderColor: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+        borderWidth: 2,
       },
     ],
-    labels: browserData.map((item) => item.name),
   };
 
-  const browserChartConfig: ChartConfig = {
-    type: 'doughnut',
+  const formattedBrowserChartData = [
+    { browser: 'Chrome', visitors: 4344, fill: '#0f172a' },
+    { browser: 'Firefox', visitors: 5435, fill: '#334155' },
+    { browser: 'Safari', visitors: 1443, fill: '#475569' },
+    { browser: 'Edge', visitors: 4443, fill: '#64748b' },
+    { browser: 'Opera', visitors: 2443, fill: '#94a3b8' },
+  ];
+
+  const browserChartConfig: ChartConfig & { visitors: { label: string } } = {
+    visitors: {
+      label: "Visitors"
+    },
+    type: {
+      label: 'doughnut',
+      color: '#0f172a',
+      responsive: true,
+    },
     options: {
       responsive: true,
       plugins: {
@@ -765,7 +775,7 @@ export default function Dashboard() {
                   </CardHeader>
                   <CardContent className="pl-2">
                     <div className="h-[200px] w-full">
-                      <BrowserChart data={browserChartData} config={browserChartConfig} />
+                      <BrowserChart data={formattedBrowserChartData} config={browserChartConfig} />
                     </div>
                   </CardContent>
                 </Card>
