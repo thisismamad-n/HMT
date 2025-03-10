@@ -305,4 +305,7 @@ interface ShaderProps {
     }
   >;
   maxFps?: number;
-} 
+}
+
+// Export as default for dynamic import
+export default CanvasRevealEffect; 

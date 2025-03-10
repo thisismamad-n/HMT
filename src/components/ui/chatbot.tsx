@@ -2,7 +2,7 @@
 
 import React from "react"; 
 
-import { CanvasRevealEffect } from "@/components/ui/canvas-effect";
+import { CanvasRevealEffect } from "@/components/ui/canvas-effect-client";
 import { DIcons } from "dicons";
 import { AnimatePresence, motion } from "framer-motion";
 
